@@ -10,7 +10,7 @@ import java.util.Map;
 public class ComScore {
 
     private static Object ctx;
-    private static ComScoreNative cs = NativeLookup.create(ComScoreNative.class);
+    private static ComScoreNative cs;
 
     /**
      * Initializes comScore<br>
@@ -37,6 +37,7 @@ public class ComScore {
      * @param interval the interval of polling, DEFAULT = 60
      */
     public static void init(Object context, String c2Value, String publisherSecretCode, boolean foregroundOnly, int interval) {
+        cs = NativeLookup.create(ComScoreNative.class);
         if (cs != null && cs.isSupported()) {
             ctx = context;
             cs.initComScore(c2Value, publisherSecretCode, foregroundOnly, interval);
@@ -153,8 +154,8 @@ public class ComScore {
     }
 
     /**
-     * Notifies of a view event. The key-value pair passed as parameter will
-     * override any persistent label.
+     * Notifies of a view event. The key-value pair passed as a parameter will
+     * override any existing persistent label.
      *
      * @param key the label key to set
      * @param value a value to apply or null to remove label
@@ -166,8 +167,8 @@ public class ComScore {
     }
 
     /**
-     * Notifies of a hidden event. The key-value pair passed as parameter will
-     * override any persistent label.
+     * Notifies of a hidden event. The key-value pair passed as a parameter will
+     * override any existing persistent label.
      *
      * @param key the label key to set
      * @param value a value to apply or null to remove label
@@ -179,9 +180,9 @@ public class ComScore {
     }
 
     /**
-     * Sets a persistent label. If the provided key exists, it will be override
-     * with the new value and if the value is *null*, the label with this key
-     * will be removed.
+     * Sets a persistent label. If the provided key exists, it will be
+     * overridden with the new value and if the value is *null*, the label with
+     * this key will be removed.
      *
      * @param key the label key to set
      * @param value a value to apply or null to remove label
@@ -195,7 +196,7 @@ public class ComScore {
     /**
      * Adds or update the given persistent labels. If any of the provided labels
      * have a *null* value, that label will be removed from the persistent
-     * labels. Existent labels that are not present on the given HashMap won't
+     * labels. Existing labels that are not present on the given HashMap won't
      * be modified.
      *
      * @param persistentLabels the labels to set
