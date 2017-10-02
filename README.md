@@ -36,6 +36,9 @@ Initialize comScore in your `init()` method:
 Usage
 =====
 
+Go to https://direct.comscore.com/clients/MobileApp.aspx to track analytics.
+Click on **Tag Review** on the side to see the usage graph. (Note that it might take up to 24 hours before you start seeing usage)
+
 **ComScore.notifyEnterForeground();**
 
 Call this method to notify that the application appears on the device screen. Recommend calling this in the `start()` method of Codename One.
