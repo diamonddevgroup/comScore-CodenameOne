@@ -28,13 +28,6 @@ Installation
 Configuration
 =============
 
-Add this to your Build Hints:
-    ios.add_libs=SystemConfiguration.framework;Security.framework
-
-If you already have `ios.add_libs` in your Build Hints, append this to it:
-
-    ;SystemConfiguration.framework;Security.framework
-
 Initialize comScore in your `init()` method:
 
     ComScore.init(context, "your_c2_value", "your_publisher_secret_code");
@@ -43,17 +36,20 @@ Initialize comScore in your `init()` method:
 Usage
 =====
 
+Go to https://direct.comscore.com/clients/MobileApp.aspx to track analytics.
+Click on **Tag Review** on the side to see the usage graph. (Note that it might take up to 24 hours before you start seeing usage)
+
 **ComScore.notifyEnterForeground();**
 
-Call this method to notify that the application appears on the device screen. I will recommend calling this in the `start()` method of Codename One.
+Call this method to notify that the application appears on the device screen. Recommend calling this in the `start()` method of Codename One.
 
 **ComScore.notifyExitForeground();**
 
-Call this method to notify that the application no longer appears on the device screen. I will recommend calling this in the `stop()` method of Codename One.
+Call this method to notify that the application no longer appears on the device screen. Recommend calling this in the `stop()` method of Codename One.
 
 **ComScore.notifyUserInteraction();**
 
-Call this method to notify that the user interacted with the application. I will recommend calling this in the `actionListener` of major buttons.
+Call this method to notify that the user interacted with the application. Recommend calling this in the `actionListener` of button clicks you want track.
 
 **ComScore.notifyUxActive();**
 
